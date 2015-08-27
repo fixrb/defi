@@ -64,7 +64,7 @@ The checksum of a file can be checked using the `sha512sum` command.  For
 example:
 
     $ sha512sum pkg/defi-0.1.0.gem
-    e9e35e1953104e2d428b0f217e418db3c1baecd9e011b2545f9fcba4ff7e3bba674c6b928b3d8db842a139cd7cc9806d77ebdc7f710ece4f2aecb343703e2451  pkg/defi-0.1.0.gem
+    a1bf7c28d86ef4f412a9294b4fc40d613ffdb6bc3a0410144d927fa95ba718e1ce7ac20e21845e99860529ad91f231e6436c4730e2ee1f6a13519476be207545  pkg/defi-0.1.0.gem
 
 ## Versioning
 
