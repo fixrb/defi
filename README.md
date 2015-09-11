@@ -63,8 +63,8 @@ built Gem they can be used for basic integrity verification purposes.
 The checksum of a file can be checked using the `sha512sum` command.  For
 example:
 
-    $ sha512sum pkg/defi-0.1.0.gem
-    a1bf7c28d86ef4f412a9294b4fc40d613ffdb6bc3a0410144d927fa95ba718e1ce7ac20e21845e99860529ad91f231e6436c4730e2ee1f6a13519476be207545  pkg/defi-0.1.0.gem
+    $ sha512sum pkg/defi-1.0.0.gem
+    c30380a253c932bbff42a36611466f2b7d59e6a1d9578a4989e7b2cfd4078cf9d64e452b0eaa055c5ab88be4816d3f366d7aa705d29bb54e2db9f75d21f36cf7  pkg/defi-1.0.0.gem
 
 ## Versioning
 

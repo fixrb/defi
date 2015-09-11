@@ -23,5 +23,17 @@ module Defi
     def to(object)
       object.public_send(@method, *@args)
     end
+
+    # Properties of the challenge.
+    #
+    # @api public
+    #
+    # @return [Hash] The properties of the challenge.
+    def to_h
+      {
+        method: @method,
+        args:   @args
+      }
+    end
   end
 end
