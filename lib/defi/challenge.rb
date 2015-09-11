@@ -14,18 +14,14 @@ module Defi
       @method = method.to_sym
       @args   = args
     end
-    #
+
     # @api public
     #
     # @param object [#object_id] The object to challenge.
     #
     # @return [#object_id] The actual value, or a raised exception.
     def to(object)
-      Victory.new(object.public_send(@method, *@args))
-    rescue => e
-      Defeat.new(e)
+      object.public_send(@method, *@args)
     end
   end
 end
-
-%w(defeat victory).each { |fname| require_relative fname }

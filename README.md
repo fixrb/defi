@@ -44,13 +44,13 @@ And then execute:
 Let's challenge -42 to return its absolute value.
 
 ```ruby
-Defi.on(:abs).to(-42).object # => 42
+Defi.send(:*, 7).to(6) # => 42
 ```
 
 Now let's challenge 'foo' to return its absolute value.
 
 ```ruby
-Defi.on(:abs).to('foo').object # => #<NoMethodError: undefined method `abs' for "foo":String>
+Defi.send(:boom).to('foo') # NoMethodError: undefined method `boom' for "foo":String
 ```
 
 ## Security

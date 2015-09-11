@@ -8,13 +8,13 @@ module Defi
   # @api public
   #
   # @example The challenge
-  #   on(:foo) # => #<Defi::Challenge:0x007f96a40925f8 @method=:foo, @args=[]>
+  #   send(:foo) # => #<Defi::Challenge:0x007f96a40925f8 @method=:foo, @args=[]>
   #
   # @param method [#to_sym] A public method.
   # @param args   [Array]   A list of arguments.
   #
   # @return [Challenge] The challenge instance.
-  def self.on(method, *args)
+  def self.send(method, *args)
     Challenge.new(method, *args)
   end
 end

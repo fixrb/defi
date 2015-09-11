@@ -2,8 +2,6 @@ require_relative File.join 'support', 'coverage'
 require_relative File.join '..', 'lib', 'defi'
 require 'spectus'
 
-Spectus.this { Defi.on(:abs).to(-42).object }.MUST(Equal: 42)
-Spectus.this { Defi.on(:abs).to(-42).valid? }.MUST(:BeTrue)
-
-Spectus.this { Defi.on(:BOOM).to(:foo).object.class }.MUST(Equal: NoMethodError)
-Spectus.this { Defi.on(:BOOM).to(:foo).valid? }.MUST(:BeFalse)
+Spectus.this { Defi.send(:abs).to(-42) }.MUST(Equal: 42)
+Spectus.this { Defi.send(:*, 7).to(6) }.MUST(Equal: 42)
+Spectus.this { Defi.send(:BOOM).to(:foo) }.MUST(RaiseException: NoMethodError)
