@@ -1,6 +1,7 @@
 # Defi
 
 [![Build Status](https://travis-ci.org/fixrb/defi.svg?branch=master)][travis]
+[![Code Climate](https://codeclimate.com/github/fixrb/defi/badges/gpa.svg)][codeclimate]
 [![Gem Version](https://badge.fury.io/rb/defi.svg)][gem]
 [![Inline docs](http://inch-ci.org/github/fixrb/defi.svg?branch=master)][inchpages]
 [![Documentation](http://img.shields.io/:yard-docs-38c800.svg)][rubydoc]
@@ -84,7 +85,8 @@ See `LICENSE.md` file.
 
 [gem]: https://rubygems.org/gems/defi
 [travis]: https://travis-ci.org/fixrb/defi
-[inchpages]: http://inch-ci.org/github/fixrb/defi/
+[codeclimate]: https://codeclimate.com/github/fixrb/defi
+[inchpages]: http://inch-ci.org/github/fixrb/defi
 [rubydoc]: http://rubydoc.info/gems/defi/frames
 
 ***
