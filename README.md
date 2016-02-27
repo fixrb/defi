@@ -43,13 +43,13 @@ And then execute:
 
 ## Usage
 
-Let's challenge -42 to return its absolute value.
+Let's challenge `6` to be multiplied by seven.
 
 ```ruby
 Defi.send(:*, 7).to(6) # => 42
 ```
 
-Now let's challenge 'foo' to return its absolute value.
+Now let's challenge `"foo"` to respond to a boom method.
 
 ```ruby
 Defi.send(:boom).to('foo') # NoMethodError: undefined method `boom' for "foo":String
