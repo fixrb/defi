@@ -95,4 +95,4 @@ See `LICENSE.md` file.
 
 This project is sponsored by:
 
-[![Sashite](http://sashite.com/img/sashite.png)](http://www.sashite.com/)
+[![Sashite](http://sashite.com/img/sashite.png)](http://sashite.com/)
