@@ -1,7 +1,7 @@
 Gem::Specification.new do |spec|
   spec.name          = 'defi'
   spec.version       = File.read('VERSION.semver').chomp
-  spec.authors       = ['Cyril Wack']
+  spec.authors       = ['Cyril Kato']
   spec.email         = ['contact@cyril.email']
 
   spec.summary       = 'Challenge library.'
@@ -14,11 +14,11 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_development_dependency 'bundler',    '~> 1.11'
-  spec.add_development_dependency 'rake',       '~> 10.5'
-  spec.add_development_dependency 'yard',       '~> 0.8'
-  spec.add_development_dependency 'simplecov',  '~> 0.11'
-  spec.add_development_dependency 'rubocop',    '~> 0.37'
+  spec.add_development_dependency 'bundler',    '~> 1.14'
+  spec.add_development_dependency 'rake',       '~> 12'
+  spec.add_development_dependency 'yard',       '~> 0.9'
+  spec.add_development_dependency 'simplecov',  '~> 0.14'
+  spec.add_development_dependency 'rubocop',    '~> 0.48'
   spec.add_development_dependency 'spectus',    '~> 3.0'
 
   spec.cert_chain   = ['certs/gem-fixrb-public_cert.pem']
