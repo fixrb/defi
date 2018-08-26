@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Defi
   # This class contains a challenge to apply against an object.
   #
