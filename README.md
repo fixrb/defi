@@ -21,16 +21,7 @@
 
 ## Installation
 
-__Defi__ is cryptographically signed.
-
-To be sure the gem you install hasn't been tampered with, add my public key (if you haven't already) as a trusted certificate:
-
-    $ gem cert --add <(curl -Ls https://raw.github.com/fixrb/defi/master/certs/gem-fixrb-public_cert.pem)
-    $ gem install defi -P HighSecurity
-
-The `HighSecurity` trust profile will verify all gems.  All of __Defi__'s dependencies are signed.
-
-Or add this line to your application's Gemfile:
+Add this line to your application's Gemfile:
 
 ```ruby
 gem 'defi'
@@ -40,15 +31,19 @@ And then execute:
 
     $ bundle
 
+Or install it yourself as:
+
+    $ gem install defi
+
 ## Usage
 
-Let's challenge `6` to be multiplied by seven.
+Let's challenge `6` to be multiplied by seven:
 
 ```ruby
 Defi.send(:*, 7).to(6) # => 42
 ```
 
-Now let's challenge `"foo"` to respond to a boom method.
+Now, let's challenge `"foo"` to respond to a `boom` method:
 
 ```ruby
 Defi.send(:boom).to('foo') # NoMethodError: undefined method `boom' for "foo":String
@@ -94,4 +89,4 @@ See `LICENSE.md` file.
 
 This project is sponsored by:
 
-[![Sashite](http://sashite.com/img/sashite.png)](http://sashite.com/)
+[![Sashite](https://sashite.com/img/sashite.png)](https://sashite.com/)

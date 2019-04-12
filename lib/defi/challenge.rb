@@ -34,7 +34,7 @@ module Defi
     def to_h
       {
         method: @method,
-        args:   @args
+        args: @args
       }
     end
   end
