@@ -3,8 +3,8 @@
 [![Build Status](https://travis-ci.org/fixrb/defi.svg?branch=master)][travis]
 [![Code Climate](https://codeclimate.com/github/fixrb/defi/badges/gpa.svg)][codeclimate]
 [![Gem Version](https://badge.fury.io/rb/defi.svg)][gem]
-[![Inline docs](http://inch-ci.org/github/fixrb/defi.svg?branch=master)][inchpages]
-[![Documentation](http://img.shields.io/:yard-docs-38c800.svg)][rubydoc]
+[![Inline docs](https://inch-ci.org/github/fixrb/defi.svg?branch=master)][inchpages]
+[![Documentation](https://img.shields.io/:yard-docs-38c800.svg)][rubydoc]
 
 > Challenge library.
 
@@ -16,8 +16,8 @@
 ## Rubies
 
 * [MRI](https://www.ruby-lang.org/)
-* [Rubinius](http://rubini.us/)
-* [JRuby](http://jruby.org/)
+* [Rubinius](https://rubinius.com/)
+* [JRuby](https://www.jruby.org/)
 
 ## Installation
 
@@ -43,7 +43,7 @@ Let's challenge `6` to be multiplied by seven:
 Defi.send(:*, 7).to(6) # => 42
 ```
 
-Now, let's challenge `"foo"` to respond to a `boom` method:
+Now, let's challenge "`foo`" with `boom` method:
 
 ```ruby
 Defi.send(:boom).to('foo') # NoMethodError: undefined method `boom' for "foo":String
@@ -64,7 +64,7 @@ example:
 
 ## Versioning
 
-__Defi__ follows [Semantic Versioning 2.0](http://semver.org/).
+__Defi__ follows [Semantic Versioning 2.0](https://semver.org/).
 
 ## Contributing
 
@@ -81,12 +81,11 @@ See `LICENSE.md` file.
 [gem]: https://rubygems.org/gems/defi
 [travis]: https://travis-ci.org/fixrb/defi
 [codeclimate]: https://codeclimate.com/github/fixrb/defi
-[gemnasium]: https://gemnasium.com/fixrb/defi
-[inchpages]: http://inch-ci.org/github/fixrb/defi
-[rubydoc]: http://rubydoc.info/gems/defi/frames
+[inchpages]: https://inch-ci.org/github/fixrb/defi
+[rubydoc]: https://rubydoc.info/gems/defi/frames
 
 ***
 
 This project is sponsored by:
 
-[![Sashite](https://sashite.com/img/sashite.png)](https://sashite.com/)
+[![Sashite](https://pbs.twimg.com/profile_images/618485028322975744/PZ9qPuI__400x400.png)](https://sashite.com/)
