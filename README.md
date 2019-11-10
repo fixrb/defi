@@ -1,6 +1,6 @@
 # Defi
 
-[![Build Status](https://travis-ci.org/fixrb/defi.svg?branch=master)][travis]
+[![Build Status](https://api.travis-ci.org/fixrb/defi.svg?branch=master)][travis]
 [![Code Climate](https://codeclimate.com/github/fixrb/defi/badges/gpa.svg)][codeclimate]
 [![Gem Version](https://badge.fury.io/rb/defi.svg)][gem]
 [![Inline docs](https://inch-ci.org/github/fixrb/defi.svg?branch=master)][inchpages]
@@ -37,7 +37,7 @@ Or install it yourself as:
 
 ## Usage
 
-Let's challenge `6` to be multiplied by seven:
+Let's multiply by `7` the number `6`:
 
 ```ruby
 Defi.send(:*, 7).to(6) # => 42

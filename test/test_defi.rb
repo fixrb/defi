@@ -1,19 +1,11 @@
 # frozen_string_literal: true
 
-require_relative File.join 'support', 'coverage'
-require_relative File.join '..', 'lib', 'defi'
-require 'spectus'
+require_relative 'helper'
 
-include Spectus
+Test1.new { Defi.send(:abs) }.run!
+Test2.new { Defi.send(:*, 7) }.run!
+Test3.new { Defi.send(:BOOM) }.run!
+Test4.new { Defi.send(:encode, 'Windows-1252', invalid: :replace, undef: :replace) }.run!
 
-d1 = Defi.send(:abs)
-it { d1.to(-42)  }.MUST equal 42
-it { d1.to_h     }.MUST eql(method: :abs, args: [])
-
-d2 = Defi.send(:*, 7)
-it { d2.to(6) }.MUST equal 42
-it { d2.to_h  }.MUST eql(method: :*, args: [7])
-
-d3 = Defi.send(:BOOM)
-it { d3.to(:foo)  }.MUST raise_exception NoMethodError
-it { d3.to_h      }.MUST eql(method: :BOOM, args: [])
+block = proc { 42 }
+Test5.new { Defi.send(:fetch, :missing_key, &block) }.run!(mocked_proc: block)
