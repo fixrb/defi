@@ -24,7 +24,7 @@ Layout/SpaceInsideStringInterpolation:
   Exclude:
     - 'lib/defi/challenge.rb'
 
-# Offense count: 7
+# Offense count: 1
 Metrics/AbcSize:
   Max: 20
 
@@ -48,14 +48,6 @@ Metrics/PerceivedComplexity:
 Style/FrozenStringLiteralComment:
   Exclude:
     - 'test/test_defi.rb'
-
-# Offense count: 2
-# Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle, ConsistentQuotesInMultiline.
-# SupportedStyles: single_quotes, double_quotes
-Style/StringLiterals:
-  Exclude:
-    - 'test/support/test6.rb'
 
 # Offense count: 1
 # Cop supports --auto-correct.

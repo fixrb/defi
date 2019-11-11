@@ -4,9 +4,9 @@ require_relative 'test'
 
 class Test2 < Test
   def run!
-    it { challenge.to_s     }.MUST eql '.*(7)'
-    it { challenge.inspect  }.MUST eql 'Defi(method: :*, args: [7], opts: {}, block: )'
-    it { challenge.to(6)    }.MUST equal 42
-    it { challenge.to_h     }.MUST eql(method: :*, args: [7], opts: {}, block: nil)
+    raise unless challenge.to_s     == '.*(7)'
+    raise unless challenge.inspect  == 'Defi(method: :*, args: [7], opts: {}, block: )'
+    raise unless challenge.to(6)    == 42
+    raise unless challenge.to_h     == { method: :*, args: [7], opts: {}, block: nil }
   end
 end
