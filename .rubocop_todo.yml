@@ -24,7 +24,7 @@ Layout/SpaceInsideStringInterpolation:
   Exclude:
     - 'lib/defi/challenge.rb'
 
-# Offense count: 6
+# Offense count: 7
 Metrics/AbcSize:
   Max: 20
 
@@ -41,9 +41,32 @@ Metrics/MethodLength:
 Metrics/PerceivedComplexity:
   Max: 8
 
-# Offense count: 12
+# Offense count: 1
+# Cop supports --auto-correct.
+# Configuration parameters: EnforcedStyle.
+# SupportedStyles: always, never
+Style/FrozenStringLiteralComment:
+  Exclude:
+    - 'test/test_defi.rb'
+
+# Offense count: 2
+# Cop supports --auto-correct.
+# Configuration parameters: EnforcedStyle, ConsistentQuotesInMultiline.
+# SupportedStyles: single_quotes, double_quotes
+Style/StringLiterals:
+  Exclude:
+    - 'test/support/test6.rb'
+
+# Offense count: 1
+# Cop supports --auto-correct.
+# Configuration parameters: MinSize, WordRegex.
+# SupportedStyles: percent, brackets
+Style/WordArray:
+  EnforcedStyle: brackets
+
+# Offense count: 15
 # Cop supports --auto-correct.
 # Configuration parameters: AutoCorrect, AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
 # URISchemes: http, https
 Metrics/LineLength:
-  Max: 141
+  Max: 143

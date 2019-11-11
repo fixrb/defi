@@ -49,6 +49,14 @@ Now, let's challenge "`foo`" with `boom` method:
 Defi.send(:boom).to('foo') # NoMethodError: undefined method `boom' for "foo":String
 ```
 
+Let's challenge "`hello world`" with `gsub!` in isolation:
+
+```ruby
+some_text = 'hello world'
+Defi.send(:gsub!, 'world', 'Alice').to!(some_text) # => "hello Alice"
+some_text # => "hello world"
+```
+
 ## Security
 
 As a basic form of security __Defi__ provides a set of SHA512 checksums for

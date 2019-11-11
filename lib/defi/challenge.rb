@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'aw'
+
 module Defi
   # This class contains a challenge to apply against an object.
   #
@@ -28,6 +30,17 @@ module Defi
     # @return [#object_id] The actual value, or a raised exception.
     def to(object)
       object.public_send(@method, *@args, **@opts, &@block)
+    end
+
+    # @api public
+    #
+    # @param object [#object_id] The object to challenge in code isolation.
+    #
+    # @return [#object_id] The actual value, or a raised exception.
+    #
+    # @see to
+    def to!(object)
+      ::Aw.fork! { to(object) }
     end
 
     # Properties of the challenge.

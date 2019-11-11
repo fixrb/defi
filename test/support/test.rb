@@ -5,9 +5,9 @@ require 'spectus'
 class Test
   include Spectus
 
-  attr_reader :subject
+  attr_reader :challenge
 
   def initialize
-    @subject = yield
+    @challenge = yield
   end
 end
