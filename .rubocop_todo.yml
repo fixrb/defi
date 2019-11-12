@@ -16,6 +16,18 @@ Layout/AlignHash:
   Exclude:
     - 'lib/defi/challenge.rb'
 
+# Offense count: 1
+# Cop supports --auto-correct.
+Layout/EmptyLineAfterGuardClause:
+  Exclude:
+    - 'test/defi/test_value.rb'
+
+# Offense count: 2
+# Cop supports --auto-correct.
+Layout/EmptyLines:
+  Exclude:
+    - 'test/defi/test_value.rb'
+
 # Offense count: 6
 # Cop supports --auto-correct.
 # Configuration parameters: EnforcedStyle.
@@ -25,6 +37,11 @@ Layout/SpaceInsideStringInterpolation:
     - 'lib/defi/challenge.rb'
 
 # Offense count: 1
+Lint/RescueException:
+  Exclude:
+    - 'lib/defi/value.rb'
+
+# Offense count: 6
 Metrics/AbcSize:
   Max: 20
 
@@ -56,9 +73,9 @@ Style/FrozenStringLiteralComment:
 Style/WordArray:
   EnforcedStyle: brackets
 
-# Offense count: 15
+# Offense count: 16
 # Cop supports --auto-correct.
 # Configuration parameters: AutoCorrect, AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
 # URISchemes: http, https
 Metrics/LineLength:
-  Max: 143
+  Max: 147

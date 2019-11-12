@@ -27,16 +27,16 @@ module Defi
     #
     # @param object [#object_id] The object to challenge.
     #
-    # @return [#object_id] The actual value, or a raised exception.
+    # @return [Defi::Value] The actual value, to raise or to return.
     def to(object)
-      object.public_send(@method, *@args, **@opts, &@block)
+      Value.new { object.public_send(@method, *@args, **@opts, &@block) }
     end
 
     # @api public
     #
     # @param object [#object_id] The object to challenge in code isolation.
     #
-    # @return [#object_id] The actual value, or a raised exception.
+    # @return [Defi::Value] The actual value, to raise or to return.
     #
     # @see to
     def to!(object)
@@ -57,6 +57,11 @@ module Defi
       }
     end
 
+    # String of the challenge.
+    #
+    # @api public
+    #
+    # @return [String] The string representation of the challenge.
     def to_s
       string = ".#{@method}"
 
@@ -77,6 +82,11 @@ module Defi
       string + stringified_items.join(', ') + ')'
     end
 
+    # A string containing a human-readable representation of the challenge.
+    #
+    # @api public
+    #
+    # @return [String] The human-readable representation of the challenge.
     def inspect
       inspected_method  = @method.inspect
       inspected_args    = @args.inspect
@@ -92,3 +102,5 @@ module Defi
     end
   end
 end
+
+require_relative 'value'

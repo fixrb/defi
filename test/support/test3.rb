@@ -8,7 +8,7 @@ class Test3 < Test
     raise unless challenge.inspect  == 'Defi(method: :BOOM, args: [], opts: {}, block: )'
     raise unless challenge.to_h     == { method: :BOOM, args: [], opts: {}, block: nil }
 
-    challenge.to(:foo)
+    challenge.to(:foo).call
     raise
   rescue NoMethodError => e
     e

@@ -40,20 +40,20 @@ Or install it yourself as:
 Let's multiply by `7` the number `6`:
 
 ```ruby
-Defi.send(:*, 7).to(6) # => 42
+Defi.send(:*, 7).to(6).call # => 42
 ```
 
 Now, let's challenge "`foo`" with `boom` method:
 
 ```ruby
-Defi.send(:boom).to('foo') # NoMethodError: undefined method `boom' for "foo":String
+Defi.send(:boom).to('foo').call # NoMethodError: undefined method `boom' for "foo":String
 ```
 
 Let's challenge "`hello world`" with `gsub!` in isolation:
 
 ```ruby
 some_text = 'hello world'
-Defi.send(:gsub!, 'world', 'Alice').to!(some_text) # => "hello Alice"
+Defi.send(:gsub!, 'world', 'Alice').to!(some_text).call # => "hello Alice"
 some_text # => "hello world"
 ```
 
