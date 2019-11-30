@@ -36,11 +36,6 @@ Layout/SpaceInsideStringInterpolation:
   Exclude:
     - 'lib/defi/challenge.rb'
 
-# Offense count: 1
-Lint/RescueException:
-  Exclude:
-    - 'lib/defi/value.rb'
-
 # Offense count: 6
 Metrics/AbcSize:
   Max: 20
@@ -60,14 +55,6 @@ Metrics/PerceivedComplexity:
 
 # Offense count: 1
 # Cop supports --auto-correct.
-# Configuration parameters: EnforcedStyle.
-# SupportedStyles: always, never
-Style/FrozenStringLiteralComment:
-  Exclude:
-    - 'test/test_defi.rb'
-
-# Offense count: 1
-# Cop supports --auto-correct.
 # Configuration parameters: MinSize, WordRegex.
 # SupportedStyles: percent, brackets
 Style/WordArray:
@@ -78,4 +65,4 @@ Style/WordArray:
 # Configuration parameters: AutoCorrect, AllowHeredoc, AllowURI, URISchemes, IgnoreCopDirectives, IgnoredPatterns.
 # URISchemes: http, https
 Metrics/LineLength:
-  Max: 147
+  Max: 150

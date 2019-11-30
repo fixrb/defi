@@ -14,6 +14,7 @@ module Defi
     # @api public
     #
     # @param block [Proc] The block of code to execute.
+    # rubocop:disable Lint/RescueException
     def initialize(&block)
       @object = block.call
       @raised = false
@@ -21,10 +22,11 @@ module Defi
       @object = e
       @raised = true
     end
+    # rubocop:enable Lint/RescueException
 
     # Raise or return the value.
     #
-    # @return [BasicObject, Exception] Raised exception or returned object.
+    # @return [#object_id] Raised exception or returned object.
     def call
       raise object if raised?
 

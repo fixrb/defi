@@ -91,7 +91,7 @@ module Defi
       inspected_method  = @method.inspect
       inspected_args    = @args.inspect
       inspected_opts    = @opts.inspect
-      inspected_block   = '<Proc>' unless @block.nil?
+      inspected_block   = @block.nil? ? 'nil' : '<Proc>'
 
       'Defi('                         \
       "method: #{inspected_method}, " \

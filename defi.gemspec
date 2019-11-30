@@ -1,19 +1,15 @@
 # frozen_string_literal: true
 
 Gem::Specification.new do |spec|
-  spec.name          = 'defi'
-  spec.version       = File.read('VERSION.semver').chomp
-  spec.authors       = ['Cyril Kato']
-  spec.email         = ['contact@cyril.email']
-  spec.summary       = 'Challenge library.'
-  spec.description   = 'Challenge library.'
-  spec.homepage      = 'https://github.com/fixrb/defi'
-  spec.license       = 'MIT'
-
-  spec.files         =
-    `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^test/}) }
-  spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
-  spec.require_paths = ['lib']
+  spec.name         = 'defi'
+  spec.version      = File.read('VERSION.semver').chomp
+  spec.author       = 'Cyril Kato'
+  spec.email        = 'contact@cyril.email'
+  spec.summary      = 'Challenge library.'
+  spec.description  = spec.summary
+  spec.homepage     = 'https://github.com/fixrb/defi'
+  spec.license      = 'MIT'
+  spec.files        = Dir['LICENSE.md', 'README.md', 'lib/**/*']
 
   spec.add_dependency 'aw',                     '~> 0.1.9'
 

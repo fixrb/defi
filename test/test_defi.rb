@@ -1,3 +1,5 @@
+# rubocop:disable Style/FrozenStringLiteralComment
+
 require_relative 'helper'
 
 Test1.new { Defi.send(:abs) }.run!
@@ -11,3 +13,5 @@ Test5.new { Defi.send(:fetch, :missing_key, &block) }.run!(mocked_proc: block)
 string = 'hello world'
 Test6.new { Defi.send(:gsub!, 'world', 'Alice') }.run!(string)
 raise string.inspect unless string == 'hello world'
+
+# rubocop:enable Style/FrozenStringLiteralComment
