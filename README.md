@@ -94,6 +94,10 @@ See `LICENSE.md` file.
 
 ***
 
-This project is sponsored by:
+<p>
+  This project is sponsored by:
 
-[![Sashite](https://pbs.twimg.com/profile_images/618485028322975744/PZ9qPuI__400x400.png)](https://sashite.com/)
+  <a href="https://sashite.com/"><img
+    src="https://raw.githubusercontent.com/fixrb/defi/master/img/sashite.png"
+    alt="Sashite" /></a>
+</p>
