@@ -7,10 +7,6 @@ script:
   - bundle exec rubocop
   - bundle exec rake test
 rvm:
-  - 2.3.3
-  - 2.4.0
-  - 2.5.0
-  - 2.6.1
   - 2.7.0-preview3
   - ruby-head
   - jruby-head

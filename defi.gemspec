@@ -11,6 +11,8 @@ Gem::Specification.new do |spec|
   spec.license      = 'MIT'
   spec.files        = Dir['LICENSE.md', 'README.md', 'lib/**/*']
 
+  spec.required_ruby_version = '> 2.7.0.preview1'
+
   spec.add_dependency 'aw',                     '~> 0.1.10'
 
   spec.add_development_dependency 'bundler',    '~> 2.1'
