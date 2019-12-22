@@ -48,7 +48,7 @@ module Defi
     def to_h
       {
         raised: raised?,
-        object: @object
+        object: object
       }
     end
 
@@ -64,7 +64,7 @@ module Defi
                  'return'
                end
 
-      "#{string} #{@object}"
+      "#{string} #{object}"
     end
 
     # A string containing a human-readable representation of the value.
@@ -73,7 +73,7 @@ module Defi
     #
     # @return [String] The human-readable representation of the value.
     def inspect
-      "Value(object: #{@object}, raised: #{raised?})"
+      "Value(object: #{object}, raised: #{raised?})"
     end
   end
 end
