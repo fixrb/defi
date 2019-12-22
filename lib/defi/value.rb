@@ -13,10 +13,10 @@ module Defi
     #
     # @api public
     #
-    # @param block [Proc] The block of code to execute.
+    # @yieldreturn [#object_id] The challenged code.
     # rubocop:disable Lint/RescueException
-    def initialize(&block)
-      @object = block.call
+    def initialize
+      @object = yield
       @raised = false
     rescue ::Exception => e
       @object = e

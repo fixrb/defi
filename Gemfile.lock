@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    defi (2.0.1)
+    defi (2.0.2)
       aw (~> 0.1.10)
 
 GEM
