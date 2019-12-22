@@ -8,17 +8,6 @@
 
 > Challenge library.
 
-## Contact
-
-* Home page: https://github.com/fixrb/defi
-* Bugs/issues: https://github.com/fixrb/defi/issues
-
-## Rubies
-
-* [MRI](https://www.ruby-lang.org/)
-* [Rubinius](https://rubinius.com/)
-* [JRuby](https://www.jruby.org/)
-
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -56,6 +45,17 @@ some_text = 'hello world'
 Defi.send(:gsub!, 'world', 'Alice').to!(some_text).call # => "hello Alice"
 some_text # => "hello world"
 ```
+
+## Contact
+
+* Home page: https://github.com/fixrb/defi
+* Bugs/issues: https://github.com/fixrb/defi/issues
+
+## Rubies
+
+* [MRI](https://www.ruby-lang.org/)
+* [Rubinius](https://rubinius.com/)
+* [JRuby](https://www.jruby.org/)
 
 ## Security
 
@@ -95,9 +95,8 @@ See `LICENSE.md` file.
 ***
 
 <p>
-  This project is sponsored by:
-
+  This project is sponsored by:<br />
   <a href="https://sashite.com/"><img
-    src="https://github.com/fixrb/defi/raw/bdf560d73e7ff2306f6f4a071ced36b383cbf35d/img/sashite.png"
+    src="https://github.com/fixrb/defi/raw/master/img/sashite.png"
     alt="Sashite" /></a>
 </p>
