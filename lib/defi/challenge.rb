@@ -1,29 +1,46 @@
 # frozen_string_literal: true
 
+require 'aw'
+
 module Defi
   # This class contains a challenge to apply against an object.
   #
   # @api private
   #
-  class Challenge
+  class Challenge < ::BasicObject
     # Initialize the challenge class.
     #
     # @api private
     #
     # @param method [#to_sym] The method to send to an object.
-    # @param args   [Array]   The arguments of the method.
-    def initialize(method, *args)
+    # @param args   [Array]   Any arguments of the method.
+    # @param opts   [Hash]    Any keyword arguments of the method.
+    # @param block  [Proc]    Any block argument of the method.
+    def initialize(method, *args, **opts, &block)
       @method = method.to_sym
       @args   = args
+      @opts   = opts
+      @block  = block
     end
 
     # @api public
     #
     # @param object [#object_id] The object to challenge.
     #
-    # @return [#object_id] The actual value, or a raised exception.
+    # @return [Defi::Value] The actual value, to raise or to return.
     def to(object)
-      object.public_send(@method, *@args)
+      Value.new { object.public_send(@method, *@args, **@opts, &@block) }
+    end
+
+    # @api public
+    #
+    # @param object [#object_id] The object to challenge in code isolation.
+    #
+    # @return [Defi::Value] The actual value, to raise or to return.
+    #
+    # @see to
+    def to!(object)
+      ::Aw.fork! { to(object) }
     end
 
     # Properties of the challenge.
@@ -34,8 +51,56 @@ module Defi
     def to_h
       {
         method: @method,
-        args: @args
+        args:   @args,
+        opts:   @opts,
+        block:  @block
       }
+    end
+
+    # String of the challenge.
+    #
+    # @api public
+    #
+    # @return [String] The string representation of the challenge.
+    def to_s
+      string = ".#{@method}"
+
+      return string if @args.empty? && @opts.empty? && @block.nil?
+
+      stringified_args  = @args.inspect[1..-2]
+      stringified_opts  = @opts.inspect[1..-2]
+      stringified_block = '<Proc>' unless @block.nil?
+
+      string += '('
+
+      stringified_items = []
+
+      stringified_items << stringified_args   unless @args.empty?
+      stringified_items << stringified_opts   unless @opts.empty?
+      stringified_items << stringified_block  unless @block.nil?
+
+      string + stringified_items.join(', ') + ')'
+    end
+
+    # A string containing a human-readable representation of the challenge.
+    #
+    # @api public
+    #
+    # @return [String] The human-readable representation of the challenge.
+    def inspect
+      inspected_method  = @method.inspect
+      inspected_args    = @args.inspect
+      inspected_opts    = @opts.inspect
+      inspected_block   = @block.nil? ? 'nil' : '<Proc>'
+
+      'Defi('                         \
+      "method: #{inspected_method}, " \
+      "args: #{  inspected_args  }, " \
+      "opts: #{  inspected_opts  }, " \
+      "block: #{ inspected_block }"   \
+      ')'
     end
   end
 end
+
+require_relative 'value'
