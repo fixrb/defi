@@ -2,12 +2,8 @@
 
 # Namespace for the Defi library.
 #
-# @api public
-#
 module Defi
   # Expectations are built with this method.
-  #
-  # @api public
   #
   # @example The challenge
   #   send(:foo) # => #<Defi::Challenge:0x007f96a40925f8 @method=:foo, @args=[]>

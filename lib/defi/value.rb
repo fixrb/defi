@@ -3,15 +3,11 @@
 module Defi
   # This class contains an object that returned or raised during the initialize.
   #
-  # @api private
-  #
   class Value
     # @return [#object_id] The returned or the raised object.
     attr_reader :object
 
     # Initialize the value class.
-    #
-    # @api public
     #
     # @yieldreturn [#object_id] The challenged code.
     # rubocop:disable Lint/RescueException
@@ -33,16 +29,12 @@ module Defi
       object
     end
 
-    # @api public
-    #
     # @return [Boolean] The value was raised (or returned)?
     def raised?
       @raised
     end
 
     # Properties of the value.
-    #
-    # @api public
     #
     # @return [Hash] The properties of the value.
     def to_h
@@ -54,22 +46,13 @@ module Defi
 
     # String of the value.
     #
-    # @api public
-    #
     # @return [String] The string representation of the value.
     def to_s
-      string = if raised?
-                 'raise'
-               else
-                 'return'
-               end
-
+      string = raised? ? 'raise' : 'return'
       "#{string} #{object}"
     end
 
     # A string containing a human-readable representation of the value.
-    #
-    # @api public
     #
     # @return [String] The human-readable representation of the value.
     def inspect

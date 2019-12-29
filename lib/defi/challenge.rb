@@ -4,13 +4,8 @@ require 'aw'
 
 module Defi
   # This class contains a challenge to apply against an object.
-  #
-  # @api private
-  #
   class Challenge < ::BasicObject
     # Initialize the challenge class.
-    #
-    # @api private
     #
     # @param method [#to_sym] The method to send to an object.
     # @param args   [Array]   Any arguments of the method.
@@ -23,8 +18,6 @@ module Defi
       @block  = block
     end
 
-    # @api public
-    #
     # @param object [#object_id] The object to challenge.
     #
     # @return [Defi::Value] The actual value, to raise or to return.
@@ -32,8 +25,6 @@ module Defi
       Value.new { object.public_send(@method, *@args, **@opts, &@block) }
     end
 
-    # @api public
-    #
     # @param object [#object_id] The object to challenge in code isolation.
     #
     # @return [Defi::Value] The actual value, to raise or to return.
@@ -44,8 +35,6 @@ module Defi
     end
 
     # Properties of the challenge.
-    #
-    # @api public
     #
     # @return [Hash] The properties of the challenge.
     def to_h
@@ -58,8 +47,6 @@ module Defi
     end
 
     # String of the challenge.
-    #
-    # @api public
     #
     # @return [String] The string representation of the challenge.
     def to_s
@@ -83,8 +70,6 @@ module Defi
     end
 
     # A string containing a human-readable representation of the challenge.
-    #
-    # @api public
     #
     # @return [String] The human-readable representation of the challenge.
     def inspect
