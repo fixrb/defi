@@ -18,11 +18,25 @@ module Defi
       @block  = block
     end
 
-    # @param object [#object_id] The object to challenge.
-    #
-    # @return [Defi::Value] The actual value, to raise or to return.
-    def to(object)
-      Value.new { object.public_send(@method, *@args, **@opts, &@block) }
+    # @see https://twitter.com/kamipo/status/1213030647591137280
+    if ::RUBY_VERSION > '2.7'
+      # @param object [#object_id] The object to challenge.
+      #
+      # @return [Defi::Value] The actual value, to raise or to return.
+      def to(object)
+        Value.new { object.public_send(@method, *@args, **@opts, &@block) }
+      end
+    else
+      # @param object [#object_id] The object to challenge.
+      #
+      # @return [Defi::Value] The actual value, to raise or to return.
+      def to(object)
+        if @opts.empty?
+          Value.new { object.public_send(@method, *@args, &@block) }
+        else
+          Value.new { object.public_send(@method, *@args, **@opts, &@block) }
+        end
+      end
     end
 
     # @param object [#object_id] The object to challenge in code isolation.
