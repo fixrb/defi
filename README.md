@@ -1,8 +1,8 @@
 # Defi
 
-[![Build Status](https://api.travis-ci.org/fixrb/defi.svg?branch=master)][travis]
+[![Build Status](https://api.travis-ci.org/fixrb/defi.svg?branch=main)][travis]
 [![Gem Version](https://badge.fury.io/rb/defi.svg)][gem]
-[![Inline docs](https://inch-ci.org/github/fixrb/defi.svg?branch=master)][inchpages]
+[![Inline docs](https://inch-ci.org/github/fixrb/defi.svg?branch=main)][inchpages]
 [![Documentation](https://img.shields.io/:yard-docs-38c800.svg)][rubydoc]
 
 > Challenge library.
@@ -12,7 +12,7 @@
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'defi'
+gem "defi"
 ```
 
 And then execute:
@@ -34,27 +34,20 @@ Defi.send(:*, 7).to(6).call # => 42
 Now, let's challenge "`foo`" with `boom` method:
 
 ```ruby
-Defi.send(:boom).to('foo').call # NoMethodError: undefined method `boom' for "foo":String
+Defi.send(:boom).to("foo").call # NoMethodError: undefined method `boom' for "foo":String
 ```
 
 Let's challenge "`hello world`" with `gsub!` in isolation:
 
 ```ruby
-some_text = 'hello world'
-Defi.send(:gsub!, 'world', 'Alice').to!(some_text).call # => "hello Alice"
+some_text = "hello world"
+Defi.send(:gsub!, "world", "Alice").to!(some_text).call # => "hello Alice"
 some_text # => "hello world"
 ```
 
 ## Contact
 
-* Home page: https://github.com/fixrb/defi
-* Bugs/issues: https://github.com/fixrb/defi/issues
-
-## Rubies
-
-* [MRI](https://www.ruby-lang.org/)
-* [Rubinius](https://rubinius.com/)
-* [JRuby](https://www.jruby.org/)
+* Source code: https://github.com/fixrb/defi/issues
 
 ## Versioning
 
@@ -69,7 +62,7 @@ The gem is available as open source under the terms of the [MIT License](https:/
 <p>
   This project is sponsored by:<br />
   <a href="https://sashite.com/"><img
-    src="https://github.com/fixrb/defi/raw/master/img/sashite.png"
+    src="https://github.com/fixrb/defi/raw/main/img/sashite.png"
     alt="Sashite" /></a>
 </p>
 

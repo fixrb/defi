@@ -48,7 +48,7 @@ module Defi
     #
     # @return [String] The string representation of the value.
     def to_s
-      string = raised? ? 'raise' : 'return'
+      string = raised? ? "raise" : "return"
       "#{string} #{object}"
     end
 

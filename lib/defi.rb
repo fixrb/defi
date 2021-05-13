@@ -19,4 +19,4 @@ module Defi
   end
 end
 
-require_relative File.join('defi', 'challenge')
+require_relative File.join("defi", "challenge")

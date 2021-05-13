@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'aw'
+require "aw"
 
 module Defi
   # This class contains a challenge to apply against an object.
@@ -18,25 +18,11 @@ module Defi
       @block  = block
     end
 
-    # @see https://twitter.com/kamipo/status/1213030647591137280
-    if ::RUBY_VERSION > '2.7'
-      # @param object [#object_id] The object to challenge.
-      #
-      # @return [Defi::Value] The actual value, to raise or to return.
-      def to(object)
-        Value.new { object.public_send(@method, *@args, **@opts, &@block) }
-      end
-    else
-      # @param object [#object_id] The object to challenge.
-      #
-      # @return [Defi::Value] The actual value, to raise or to return.
-      def to(object)
-        if @opts.empty?
-          Value.new { object.public_send(@method, *@args, &@block) }
-        else
-          Value.new { object.public_send(@method, *@args, **@opts, &@block) }
-        end
-      end
+    # @param object [#object_id] The object to challenge.
+    #
+    # @return [Defi::Value] The actual value, to raise or to return.
+    def to(object)
+      Value.new { object.public_send(@method, *@args, **@opts, &@block) }
     end
 
     # @param object [#object_id] The object to challenge in code isolation.
@@ -70,9 +56,9 @@ module Defi
 
       stringified_args  = @args.inspect[1..-2]
       stringified_opts  = @opts.inspect[1..-2]
-      stringified_block = '<Proc>' unless @block.nil?
+      stringified_block = "<Proc>" unless @block.nil?
 
-      string += '('
+      string += "("
 
       stringified_items = []
 
@@ -80,7 +66,7 @@ module Defi
       stringified_items << stringified_opts   unless @opts.empty?
       stringified_items << stringified_block  unless @block.nil?
 
-      string + stringified_items.join(', ') + ')'
+      "#{string}#{stringified_items.join(', ')})"
     end
 
     # A string containing a human-readable representation of the challenge.
@@ -90,16 +76,16 @@ module Defi
       inspected_method  = @method.inspect
       inspected_args    = @args.inspect
       inspected_opts    = @opts.inspect
-      inspected_block   = @block.nil? ? 'nil' : '<Proc>'
+      inspected_block   = @block.nil? ? "nil" : "<Proc>"
 
-      'Defi('                         \
+      "Defi("                         \
       "method: #{inspected_method}, " \
-      "args: #{  inspected_args  }, " \
-      "opts: #{  inspected_opts  }, " \
-      "block: #{ inspected_block }"   \
-      ')'
+      "args: #{inspected_args}, " \
+      "opts: #{inspected_opts}, " \
+      "block: #{inspected_block}"   \
+      ")"
     end
   end
 end
 
-require_relative 'value'
+require_relative "value"
