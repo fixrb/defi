@@ -1,9 +1,10 @@
 # Defi
 
-[![Build Status](https://api.travis-ci.org/fixrb/defi.svg?branch=main)][travis]
-[![Gem Version](https://badge.fury.io/rb/defi.svg)][gem]
-[![Inline docs](https://inch-ci.org/github/fixrb/defi.svg?branch=main)][inchpages]
-[![Documentation](https://img.shields.io/:yard-docs-38c800.svg)][rubydoc]
+[![Version](https://img.shields.io/github/v/tag/fixrb/defi?label=Version&logo=github)](https://github.com/fixrb/defi/releases)
+[![Yard documentation](https://img.shields.io/badge/Yard-documentation-blue.svg?logo=github)](https://rubydoc.info/github/fixrb/defi/main)
+[![CI](https://github.com/fixrb/defi/workflows/CI/badge.svg?branch=main)](https://github.com/fixrb/defi/actions?query=workflow%3Aci+branch%3Amain)
+[![RuboCop](https://github.com/fixrb/defi/workflows/RuboCop/badge.svg?branch=main)](https://github.com/fixrb/defi/actions?query=workflow%3Arubocop+branch%3Amain)
+[![License](https://img.shields.io/github/license/fixrb/defi?label=License&logo=github)](https://github.com/fixrb/defi/raw/main/LICENSE.md)
 
 > Challenge library.
 
@@ -17,11 +18,15 @@ gem "defi"
 
 And then execute:
 
-    $ bundle
+```sh
+bundle
+```
 
 Or install it yourself as:
 
-    $ gem install defi
+```sh
+gem install defi
+```
 
 ## Usage
 
@@ -55,7 +60,7 @@ __Defi__ follows [Semantic Versioning 2.0](https://semver.org/).
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+The [gem](https://rubygems.org/gems/defi) is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
 
 ***
 
@@ -65,8 +70,3 @@ The gem is available as open source under the terms of the [MIT License](https:/
     src="https://github.com/fixrb/defi/raw/main/img/sashite.png"
     alt="Sashite" /></a>
 </p>
-
-[gem]: https://rubygems.org/gems/defi
-[travis]: https://travis-ci.org/fixrb/defi
-[inchpages]: https://inch-ci.org/github/fixrb/defi
-[rubydoc]: https://rubydoc.info/gems/defi/frames

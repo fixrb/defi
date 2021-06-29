@@ -79,11 +79,11 @@ module Defi
       inspected_block   = @block.nil? ? "nil" : "<Proc>"
 
       "Defi("                         \
-      "method: #{inspected_method}, " \
-      "args: #{inspected_args}, " \
-      "opts: #{inspected_opts}, " \
-      "block: #{inspected_block}"   \
-      ")"
+        "method: #{inspected_method}, " \
+        "args: #{inspected_args}, " \
+        "opts: #{inspected_opts}, " \
+        "block: #{inspected_block}"   \
+        ")"
     end
   end
 end
