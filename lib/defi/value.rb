@@ -48,8 +48,7 @@ module Defi
     #
     # @return [String] The string representation of the value.
     def to_s
-      string = raised? ? "raise" : "return"
-      "#{string} #{object}"
+      "#{raise_or_return} #{object}"
     end
 
     # A string containing a human-readable representation of the value.
@@ -57,6 +56,13 @@ module Defi
     # @return [String] The human-readable representation of the value.
     def inspect
       "Value(object: #{object}, raised: #{raised?})"
+    end
+
+    private
+
+    # @return [String] A "raise" or "return" string.
+    def raise_or_return
+      raised? ? "raise" : "return"
     end
   end
 end

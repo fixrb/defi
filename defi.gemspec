@@ -8,11 +8,11 @@ Gem::Specification.new do |spec|
   spec.summary      = "Challenge library."
   spec.description  = spec.summary
   spec.homepage     = "https://github.com/fixrb/defi"
-  spec.required_ruby_version = Gem::Requirement.new(">= 2.7.0")
+  spec.required_ruby_version = ::Gem::Requirement.new(">= 2.7.0")
   spec.license      = "MIT"
   spec.files        = Dir["LICENSE.md", "README.md", "lib/**/*"]
 
-  spec.add_dependency "aw", "~> 0.1.12"
+  spec.add_dependency "aw", "~> 0.1.13"
 
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "rake"

@@ -7,7 +7,9 @@ class Test4 < Test
     raise unless challenge.to_s == '.encode("Windows-1252", :invalid=>:replace, :undef=>:replace)'
 
     unless challenge.inspect == 'Defi(method: :encode, args: ["Windows-1252"], opts: {:invalid=>:replace, :undef=>:replace}, block: nil)'
+      # :nocov:
       raise
+      # :nocov:
     end
 
     raise unless challenge.to("hi∑").call == "hi?"

@@ -5,4 +5,4 @@
   require_relative path
 end
 
-require_relative File.join "..", "lib", "defi"
+require_relative File.join("..", "lib", "defi")

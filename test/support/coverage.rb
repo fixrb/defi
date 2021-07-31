@@ -2,4 +2,5 @@
 
 require "simplecov"
 
+SimpleCov.command_name "Ruby tests"
 SimpleCov.start

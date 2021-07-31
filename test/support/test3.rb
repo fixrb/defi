@@ -9,7 +9,10 @@ class Test3 < Test
     raise unless challenge.to_h     == { method: :BOOM, args: [], opts: {}, block: nil }
 
     challenge.to(:foo).call
+
+    # :nocov:
     raise
+    # :nocov:
   rescue NoMethodError => e
     e
   end
