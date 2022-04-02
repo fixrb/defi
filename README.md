@@ -19,7 +19,7 @@ gem "defi"
 And then execute:
 
 ```sh
-bundle
+bundle install
 ```
 
 Or install it yourself as:

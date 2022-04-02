@@ -46,6 +46,10 @@ module Defi
       }
     end
 
+    # rubocop:disable Metrics/AbcSize
+    # rubocop:disable Metrics/CyclomaticComplexity
+    # rubocop:disable Metrics/MethodLength
+
     # String of the challenge.
     #
     # @return [String] The string representation of the challenge.
@@ -66,8 +70,12 @@ module Defi
       stringified_items << stringified_opts   unless @opts.empty?
       stringified_items << stringified_block  unless @block.nil?
 
-      "#{string}#{stringified_items.join(', ')})"
+      "#{string}#{stringified_items.join(", ")})"
     end
+
+    # rubocop:enable Metrics/AbcSize
+    # rubocop:enable Metrics/CyclomaticComplexity
+    # rubocop:enable Metrics/MethodLength
 
     # A string containing a human-readable representation of the challenge.
     #
@@ -78,11 +86,11 @@ module Defi
       inspected_opts    = @opts.inspect
       inspected_block   = @block.nil? ? "nil" : "<Proc>"
 
-      "Defi("                         \
+      "Defi(" \
         "method: #{inspected_method}, " \
         "args: #{inspected_args}, " \
         "opts: #{inspected_opts}, " \
-        "block: #{inspected_block}"   \
+        "block: #{inspected_block}" \
         ")"
     end
   end
