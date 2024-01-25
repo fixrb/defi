@@ -2,21 +2,27 @@
 
 # Namespace for the Defi library.
 #
+# This file serves as the entry point for the Defi library, establishing the
+# Defi namespace and requiring necessary components.  It is typically required
+# at the beginning of using the Defi library in an application.
+#
+# @example Requiring the Defi library in a Ruby application
+#   require "defi"
+#
+# @example Adding 2 to 1
+#   # Create a Defi method object for addition with an argument of 2
+#   addition = Defi(:+, 2)
+#   addition.inspect # => "Defi(name: :+, args: [2], opts: {}, block: nil)"
+#
+#   # Apply the addition to the number 1
+#   result = addition.to(1)
+#   result # => Value(object: 3, raised: false)
+#
+#   # Execute the addition and get the result
+#   result.call # => 3
+#
 module Defi
-  # Expectations are built with this method.
-  #
-  # @example A :foo challenge
-  #   send(:foo) # => #<Defi::Challenge:0x007f96a40925f8 @method=:foo, @args=[]>
-  #
-  # @param method [#to_sym] The method to send to an object.
-  # @param args   [Array]   Any arguments of the method.
-  # @param kwargs [Hash]    Any keyword arguments of the method.
-  # @param block  [Proc]    Any block argument of the method.
-  #
-  # @return [Challenge] The challenge instance.
-  def self.send(method, *args, **kwargs, &block)
-    Challenge.new(method, *args, **kwargs, &block)
-  end
 end
 
-require_relative File.join("defi", "challenge")
+# Require additional components of the Defi library.
+require_relative "kernel"

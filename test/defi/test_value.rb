@@ -20,22 +20,10 @@ end
 
 VALUE2 = Defi::Value.new { raise OBJECT2 }
 
-if RUBY_VERSION > "3.1"
-  unless VALUE2.inspect == "Value(object: uninitialized constant Defi::BOOM\n\n  Defi::BOOM\n      ^^^^^^, raised: true)" # rubocop:disable Layout/LineLength
-    raise
-  end
-else
-  raise unless VALUE2.inspect == "Value(object: uninitialized constant Defi::BOOM, raised: true)"
-end
-
+raise unless VALUE2.inspect == "Value(object: uninitialized constant Defi::BOOM, raised: true)"
 raise unless VALUE2.raised? == true
 raise unless VALUE2.to_h    == { raised: true, object: OBJECT2 }
-
-if RUBY_VERSION > "3.1"
-  raise unless VALUE2.to_s == "raise uninitialized constant Defi::BOOM\n\n  Defi::BOOM\n      ^^^^^^"
-else
-  raise unless VALUE2.to_s == "raise uninitialized constant Defi::BOOM"
-end
+raise unless VALUE2.to_s == "raise uninitialized constant Defi::BOOM"
 
 begin
   VALUE2.call

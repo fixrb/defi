@@ -1,15 +1,30 @@
 # frozen_string_literal: true
 
 module Defi
-  # This class contains an object that returned or raised during the initialize.
+  # Represents a result of an operation, encapsulating either the returned value
+  # or an exception raised during the execution.
   #
+  # This class is used to handle the outcome of a method invocation, allowing
+  # to distinguish between successful results and exceptions.
   class Value
+    RAISE = "raise"
+    RETURN = "return"
+
     # @return [#object_id] The returned or the raised object.
     attr_reader :object
 
-    # Initialize the value class.
+    # Initializes a Value object with the result of the provided block.
+    # Captures any exception raised during the block execution.
     #
-    # @yieldreturn [#object_id] The challenged code.
+    # @example
+    #   value = Defi::Value.new { 1 + 1 }
+    #   value.call # => 2
+    #
+    # @example Handling an exception
+    #   value = Defi::Value.new { raise 'Error' }
+    #   value.call # raises 'Error'
+    #
+    # @yieldreturn [#object_id] The result of the block or the exception raised.
     # rubocop:disable Lint/RescueException
     def initialize
       @object = yield
@@ -20,49 +35,61 @@ module Defi
     end
     # rubocop:enable Lint/RescueException
 
-    # Raise or return the value.
+    # Returns the object if no exception was raised, otherwise raises the exception.
     #
-    # @return [#object_id] Raised exception or returned object.
+    # @example
+    #   value = Defi::Value.new { "Hello" }
+    #   value.call # => "Hello"
+    #
+    # @return [#object_id] The returned object or raises the captured exception.
     def call
       raise object if raised?
 
       object
     end
 
-    # @return [Boolean] The value was raised (or returned)?
+    # Checks if an exception was raised during the execution.
+    #
+    # @example
+    #   value = Defi::Value.new { raise 'Error' }
+    #   value.raised? # => true
+    #
+    # @return [Boolean] True if an exception was raised, otherwise false.
     def raised?
       @raised
     end
 
-    # Properties of the value.
+    # Returns a hash containing the properties of the Value object.
     #
-    # @return [Hash] The properties of the value.
+    # @return [Hash] The properties of the Value object.
     def to_h
       {
         raised: raised?,
-        object: object
+        object:
       }
     end
 
-    # String of the value.
+    # Returns a string representation of the Value object.
     #
-    # @return [String] The string representation of the value.
+    # @return [String] The string representation of the Value object.
     def to_s
       "#{raise_or_return} #{object}"
     end
 
-    # A string containing a human-readable representation of the value.
+    # Returns a human-readable representation of the Value object.
     #
-    # @return [String] The human-readable representation of the value.
+    # @return [String] The human-readable representation of the Value object.
     def inspect
       "Value(object: #{object}, raised: #{raised?})"
     end
 
     private
 
+    # Returns a string indicating whether the object was raised or returned.
+    #
     # @return [String] A "raise" or "return" string.
     def raise_or_return
-      raised? ? "raise" : "return"
+      raised? ? RAISE : RETURN
     end
   end
 end
