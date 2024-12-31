@@ -2,27 +2,33 @@
 
 # Namespace for the Defi library.
 #
-# This file serves as the entry point for the Defi library, establishing the
-# Defi namespace and requiring necessary components.  It is typically required
-# at the beginning of using the Defi library in an application.
+# Defi provides a flexible way to specify method calls with arguments
+# for later execution. It supports method chaining, exception handling,
+# and value inspection.
 #
-# @example Requiring the Defi library in a Ruby application
-#   require "defi"
-#
-# @example Adding 2 to 1
-#   # Create a Defi method object for addition with an argument of 2
+# @example Basic arithmetic operation
 #   addition = Defi(:+, 2)
-#   addition.inspect # => "Defi(name: :+, args: [2], opts: {}, block: nil)"
+#   addition.to(1).call # => 3
 #
-#   # Apply the addition to the number 1
-#   result = addition.to(1)
-#   result # => Value(object: 3, raised: false)
+# @example String manipulation
+#   upcase = Defi(:upcase)
+#   upcase.to("hello").call # => "HELLO"
 #
-#   # Execute the addition and get the result
-#   result.call # => 3
+# @example Method with keyword arguments
+#   format = Defi(:format, precision: 2)
+#   format.to(3.14159).call # => "3.14"
+#
+# @example Block usage
+#   map_double = Defi(:map) { |x| x * 2 }
+#   map_double.to([1, 2, 3]).call # => [2, 4, 6]
+#
+# @example Error handling
+#   result = Defi(:undefined_method).to(42)
+#   result.raised? # => true
+#   result.object # => #<NoMethodError: ...>
 #
 module Defi
 end
 
-# Require additional components of the Defi library.
+# Load core components
 require_relative "kernel"

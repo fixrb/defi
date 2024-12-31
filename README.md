@@ -2,8 +2,6 @@
 
 [![Version](https://img.shields.io/github/v/tag/fixrb/defi?label=Version&logo=github)](https://github.com/fixrb/defi/tags)
 [![Yard documentation](https://img.shields.io/badge/Yard-documentation-blue.svg?logo=github)](https://rubydoc.info/github/fixrb/defi/main)
-[![Ruby](https://github.com/fixrb/defi/workflows/Ruby/badge.svg?branch=main)](https://github.com/fixrb/defi/actions?query=workflow%3Aruby+branch%3Amain)
-[![RuboCop](https://github.com/fixrb/defi/workflows/RuboCop/badge.svg?branch=main)](https://github.com/fixrb/defi/actions?query=workflow%3Arubocop+branch%3Amain)
 [![License](https://img.shields.io/github/license/fixrb/defi?label=License&logo=github)](https://github.com/fixrb/defi/raw/main/LICENSE.md)
 
 **Defi** is a streamlined Ruby library designed for the specification of method arguments while respecting their signatures.
@@ -83,11 +81,6 @@ __Defi__ follows [Semantic Versioning 2.0](https://semver.org/).
 
 The [gem](https://rubygems.org/gems/defi) is available as open source under the terms of the [MIT License](https://github.com/fixrb/defi/raw/main/LICENSE.md).
 
----
+## Sponsors
 
-<p>
-  This project is sponsored by:<br />
-  <a href="https://sashite.com/"><img
-    src="https://github.com/fixrb/defi/raw/main/img/sashite.png"
-    alt="Sashité" /></a>
-</p>
+This project is sponsored by [Sashité](https://sashite.com/)

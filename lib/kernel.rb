@@ -2,41 +2,44 @@
 
 require_relative File.join("defi", "method")
 
-# Extension of the Kernel module to include the Defi method.
-# The Defi method is a convenient way to create Method objects
-# that encapsulate a method name and its arguments, offering a
-# dynamic approach to method invocation.
+# Core Ruby module extended to provide the Defi method globally.
+# This extension allows for convenient method encapsulation and
+# delayed execution through the Defi method, accessible anywhere
+# in the Ruby environment.
 module Kernel
-  # Disabling the RuboCop rule for method naming conventions
-  # to define a method with an uppercase name for stylistic reasons.
   # rubocop:disable Naming/MethodName
 
   # Creates a new Defi::Method instance.
-  # This method provides a simple and elegant way to encapsulate
-  # a method name and its arguments for later invocation.
+  # This method provides a flexible way to encapsulate a method name along with its
+  # arguments, keyword arguments, and an optional block for later invocation.
   #
-  # @example Creating a Defi method without arguments
-  #   Defi(:foo).inspect # => "Defi(name: :foo, args: [], opts: {}, block: nil)"
+  # @param method_name [Symbol] The method name to be sent to an object
+  # @param args [Array] Positional arguments to be passed to the method
+  # @param opts [Hash] Keyword arguments to be passed to the method
+  # @param block [Proc] Optional block to be passed to the method
   #
-  # @example Adding 2 to 1
-  #   # Create a Defi method object for addition with an argument of 2
-  #   addition = Defi(:+, 2)
-  #   addition.inspect # => "Defi(name: :+, args: [2], opts: {}, block: nil)"
+  # @example Basic method without arguments
+  #   Defi(:to_s)
   #
-  #   # Apply the addition to the number 1
-  #   result = addition.to(1)
-  #   result # => Value(object: 3, raised: false)
+  # @example Method with positional arguments
+  #   Defi(:+, 2)
+  #   Defi(:[], 0, 2)  # For array/string slicing
   #
-  #   # Execute the addition and get the result
-  #   result.call # => 3
+  # @example Method with keyword arguments
+  #   Defi(:transform, x: 1, y: 2)
   #
-  # @param method_name [Symbol] The method name to be sent to an object.
+  # @example Method with a block
+  #   Defi(:map) { |x| x * 2 }
   #
-  # @return [Defi::Method] An instance of Defi::Method encapsulating the method name and provided arguments.
-  def Defi(method_name, ...)
-    ::Defi::Method.new(method_name, ...)
+  # @example Complex method call
+  #   Defi(:reduce, 0, &:+)  # Sum an array
+  #
+  # @raise [ArgumentError] If method_name is not a Symbol
+  #
+  # @return [Defi::Method] An instance of Defi::Method encapsulating the method call
+  def Defi(method_name, *args, **opts, &block)
+    ::Defi::Method.new(method_name, *args, **opts, &block)
   end
 
-  # Re-enabling the RuboCop rule for method naming conventions.
   # rubocop:enable Naming/MethodName
 end
