@@ -4,78 +4,71 @@
 [![Yard documentation](https://img.shields.io/badge/Yard-documentation-blue.svg?logo=github)](https://rubydoc.info/github/fixrb/defi/main)
 [![License](https://img.shields.io/github/license/fixrb/defi?label=License&logo=github)](https://github.com/fixrb/defi/raw/main/LICENSE.md)
 
-**Defi** is a streamlined Ruby library designed for the specification of method arguments while respecting their signatures.
-Rather than representing method signatures themselves, Defi focuses on providing a way to furnish methods with appropriate arguments, thereby preparing them for invocation.
-
-This approach serves as an alternative to traditional methods like `Object#method` and `UnboundMethod`.
-Where `Object#method` is bound to a specific object and `UnboundMethod` requires compatibility with the method’s originating class, Defi offers a more flexible and universal way to prepare method calls.
-It allows method arguments to be specified in advance and then applied to any compatible object – those equipped with corresponding methods.
-
-Defi is particularly useful in scenarios where you need to apply a set of method arguments across different objects to observe the varying outcomes, whether they be returned values or exceptions.
-This makes it an ideal tool for testing, method comparison across different implementations, or any situation where method behavior needs to be assessed dynamically across various objects.
+Defi prepares a method call, a name with its arguments, and sends it to any object, keeping what came back: the value returned, or the exception raised. The same call can be sent to as many objects as you like, to compare what each one does with it.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
 ```ruby
+# Gemfile
 gem "defi"
 ```
 
-And then execute:
-
-```sh
-bundle install
-```
-
-Or install it yourself as:
-
-```sh
-gem install defi
-```
+Defi requires Ruby 3.3 or later, and depends on nothing.
 
 ## Usage
 
-The `Defi` library simplifies the task of applying method signatures to various objects, regardless of their type (instances, modules, etc.).
-Below are some detailed examples to demonstrate its versatility and ease of use:
-
-### Example 1: Multiplying Numbers
-
-Suppose you want to multiply the number `6` by `7`.
-With `Defi`, this can be elegantly done as follows:
+A challenge is a method name, with positional arguments, keyword arguments and a block, as you would write them after a dot:
 
 ```ruby
-result = Defi(:*, 7).to(6).call
-puts result # Output: 42
+require "defi"
+
+challenge = Defi::Challenge.new(:fetch, :b, 0)
+challenge.to_s # => ".fetch(:b, 0)"
 ```
 
-Here, `Defi(:*, 7)` creates a challenge with the multiplication method (`:*`) and the argument `7`.
-The `.to(6)` method specifies that this challenge should be applied to the number `6`.
-Finally, `.call` executes the challenge, yielding the result `42`.
-
-### Example 2: Invoking an Undefined Method
-
-`Defi` also elegantly handles cases where the method might not exist on the target object.
-For instance:
+Sent to an object with `to`, it brings back a value: what the method returned, or what it raised.
 
 ```ruby
-begin
-  Defi(:boom).to("foo").call
-rescue NoMethodError => e
-  puts e.message # Output: undefined method `boom' for "foo":String
-end
+value = challenge.to({ b: 2 })
+value.raised? # => false
+value.object  # => 2
+value.call    # => 2
+
+value = Defi::Challenge.new(:fetch, :b).to({})
+value.raised? # => true
+value.object  # => #<KeyError: key not found: :b>
+value.call    # raises the KeyError again
 ```
 
-In this example, we attempt to call the non-existent method `boom` on the string `"foo"`.
-`Defi` correctly raises a `NoMethodError`, showing that the method `boom` is undefined for a `String` object.
+Keyword arguments and the block go through as they are:
 
-## Contact
+```ruby
+Defi::Challenge.new(:encode, "US-ASCII", undef: :replace).to("café").object # => "caf?"
+Defi::Challenge.new(:map) { |n| n * 2 }.to([1, 2]).object # => [2, 4]
+```
 
-* Source code: https://github.com/fixrb/defi/issues
+## What comes back
+
+The message is sent with `public_send`: a private method, or a `BasicObject`, which has no `public_send`, gives a `NoMethodError`. `public_send` protects the named method only: a challenge of `send` or `instance_eval`, which are public, reaches what they reach.
+
+A challenge keeps as its value the exceptions a method raises on its own: a `StandardError`, a `ScriptError` (such as `NotImplementedError`), a `SystemStackError`, or the `SystemExit` of an `exit` or an `abort`. What is not the method's doing goes through: an `Interrupt`, a `SignalException`, a `NoMemoryError`, the exception a `Timeout` uses to end its block (a `Timeout` given a class to raise, such as `RuntimeError`, is kept like any `StandardError`), and any other subclass of `Exception`. `Defi::Value::RAISED` lists the classes kept. `call` raises the exception again, the same object, with its own cause.
+
+`to_s` writes the call as `.name(1, key: 2, &block)`: the arguments and the keys by their `inspect`, which runs their code and can change from one Ruby to the next (a Hash in 3.4, a Set in 4.0), the block as `&block`.
+
+A challenge and a value are frozen. Their arguments are the objects given, not copies: a mutable argument stays shared with the caller.
+
+## Changes in 4.0
+
+Compared with 3.0.1:
+
+- `Defi::Method` becomes `Defi::Challenge`, a plain class, no longer a `BasicObject`, in `defi/challenge.rb`: `require "defi/method"` becomes `require "defi"`. `Kernel#Defi`, which every object received as a public method, is gone: write `Defi::Challenge.new`.
+- `to` keeps the exceptions of the method only, where 3.0.1 caught every `Exception`, `Timeout` and `Interrupt` included. A name that is not a Symbol raises `ArgumentError`, as documented, with a new message; the `BasicObject` could not even `raise`. `call` keeps the cause of the exception it raises again.
+- `Challenge#to_s` writes keyword arguments as `key: value` and the block as `&block`. `args` and `opts` are frozen. `Value.new` takes the object and whether it was raised; `Value::RAISE` and `Value::RETURN` are gone, as are `to_h` on both classes, `to_s` on a value and the custom `inspect` methods.
+- Ruby 3.3 or later; tested on 3.3, 3.4, 4.0 and head.
 
 ## Versioning
 
-__Defi__ follows [Semantic Versioning 2.0](https://semver.org/).
+Defi follows [Semantic Versioning 2.0](https://semver.org/).
 
 ## License
 
