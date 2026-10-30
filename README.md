@@ -51,11 +51,15 @@ Defi::Challenge.new(:map) { |n| n * 2 }.to([1, 2]).object # => [2, 4]
 
 The message is sent with `public_send`: a private method, or a `BasicObject`, which has no `public_send`, gives a `NoMethodError`. `public_send` protects the named method only: a challenge of `send` or `instance_eval`, which are public, reaches what they reach.
 
-A challenge keeps as its value the exceptions a method raises on its own: a `StandardError`, a `ScriptError` (such as `NotImplementedError`), a `SystemStackError`, or the `SystemExit` of an `exit` or an `abort`. What is not the method's doing goes through: an `Interrupt`, a `SignalException`, a `NoMemoryError`, the exception a `Timeout` uses to end its block (a `Timeout` given a class to raise, such as `RuntimeError`, is kept like any `StandardError`), and any other subclass of `Exception`. `Defi::Value::RAISED` lists the classes kept. `call` raises the exception again, the same object, with its own cause.
+A challenge keeps as its value the exceptions a method raises on its own: a `StandardError`, a `ScriptError` (such as `NotImplementedError`), a `SystemStackError`, or the `SystemExit` of an `exit` or an `abort`. What is not the method's doing goes through: an `Interrupt`, a `SignalException`, a `NoMemoryError`, the exception a `Timeout` uses to end its block (a `Timeout` given a class to raise, such as `RuntimeError`, is kept like any `StandardError`), and any other subclass of `Exception`. `Defi::Value::RAISED` lists the classes kept. `call` raises the exception again, the same object, with its own cause, read as `Exception` does whatever the exception says of it.
 
 `to_s` writes the call as `.name(1, key: 2, &block)`: the arguments and the keys by their `inspect`, which runs their code and can change from one Ruby to the next (a Hash in 3.4, a Set in 4.0), the block as `&block`.
 
 A challenge and a value are frozen. Their arguments are the objects given, not copies: a mutable argument stays shared with the caller.
+
+## Changes in 4.0.1
+
+- `call` reads the cause of the exception it raises again as `Exception` does, where 4.0.0 asked the exception, which could answer something that is not an exception and turn the call into a `TypeError`.
 
 ## Changes in 4.0
 

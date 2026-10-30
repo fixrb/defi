@@ -29,7 +29,7 @@ module Defi
     # @return [Object] the object returned
     # @raise [Exception] the exception raised, again, with its own cause
     def call
-      raise object, cause: object.cause if raised?
+      raise object, cause: ::Exception.instance_method(:cause).bind_call(object) if raised?
 
       object
     end
