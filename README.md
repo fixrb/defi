@@ -1,7 +1,7 @@
 # Defi
 
 [![Version](https://img.shields.io/github/v/tag/fixrb/defi?label=Version&logo=github)](https://github.com/fixrb/defi/tags)
-[![Yard documentation](https://img.shields.io/badge/Yard-documentation-blue.svg?logo=github)](https://rubydoc.info/github/fixrb/defi/main)
+[![Yard documentation](https://img.shields.io/badge/Yard-documentation-blue.svg?logo=github)](https://gemdocs.org/gems/defi/latest/)
 [![License](https://img.shields.io/github/license/fixrb/defi?label=License&logo=github)](https://github.com/fixrb/defi/raw/main/LICENSE.md)
 
 Defi prepares a method call, a name with its arguments, and sends it to any object, keeping what came back: the value returned, or the exception raised. The same call can be sent to as many objects as you like, to compare what each one does with it.
